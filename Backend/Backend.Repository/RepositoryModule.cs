@@ -10,7 +10,6 @@ namespace Backend.Repository
             builder.RegisterType<MemberRepository>().As<IMemberRepository>();
             builder.RegisterType<CourtRepository>().As<ICourtRepository>();
             builder.RegisterType<ReservationRepository>().As<IReservationRepository>();
-            builder.RegisterType<ReservationMemberRepository>().As<IReservationMemberRepository>();
         }
     }
 }

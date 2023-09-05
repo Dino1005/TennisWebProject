@@ -68,7 +68,6 @@
   <ItemGroup>
     <Compile Include="ICourtRepository.cs" />
     <Compile Include="IMemberRepository.cs" />
-    <Compile Include="IReservationMemberRepository.cs" />
     <Compile Include="IReservationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

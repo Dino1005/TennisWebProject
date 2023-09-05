@@ -1,0 +1,553 @@
+@import url("https://fonts.googleapis.com/css2?family=Sarabun&display=swap");
+
+:root {
+  --primary-dark: #952323;
+  --primary-light: #a73121;
+  --secondary-dark: #dad4b5;
+  --secondary-light: #f2e8c6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: "Sarabun", sans-serif;
+}
+
+a {
+  text-decoration: none !important;
+  font-size: large;
+  font-weight: 500;
+}
+
+label {
+  margin-top: 10px;
+}
+
+/*--------------------------------------------NAVBAR--------------------------------------------*/
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav {
+  background-color: var(--secondary-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+nav img {
+  width: 80px;
+  cursor: pointer;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 90%;
+}
+
+.nav-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-title-text {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--primary-dark);
+  padding-left: 15px;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-content a {
+  color: var(--primary-light);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.nav-content a:hover {
+  color: var(--primary-dark);
+}
+
+.card-container {
+  background-color: var(--secondary-light);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.btn {
+  background-color: var(--primary-dark) !important;
+  border: none !important;
+}
+
+/*--------------------------------------------HEADER--------------------------------------------*/
+
+.header-content {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("./assets/background.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 15vh;
+  flex-direction: column;
+}
+
+.header-content-home {
+  height: 20vh !important;
+}
+
+.header-text {
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--secondary-light);
+}
+
+/*--------------------------------------------PAGENAV--------------------------------------------*/
+
+.pagenav-content {
+  width: 80%;
+  margin-top: 30px;
+}
+
+.pagenav-card img {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+}
+
+.pagenav-content {
+  justify-content: space-between;
+}
+
+.pagenav-content h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-light);
+  margin: 10px 0;
+}
+
+.pagenav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: var(--secondary-light);
+  border: none;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.pagenav-card:hover {
+  transform: scale(1.15);
+  transition: transform 0.3s ease;
+}
+
+/*--------------------------------------------MEMBER--------------------------------------------*/
+
+.member-content span {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+.member-table {
+  width: 60%;
+}
+
+.member-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--secondary-light);
+  border-radius: 10px;
+  margin: 10px;
+}
+
+/*--------------------------------------------DATESELECT--------------------------------------------*/
+
+.date-select-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.date-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/*--------------------------------------------COURTTABLE--------------------------------------------*/
+
+.court-table {
+  width: 80%;
+  margin-top: 30px;
+  background-color: var(--secondary-light);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.court-card {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.court-card h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+}
+
+.court-card hr {
+  border: 1px solid var(--primary-dark);
+  margin: 4px 0 8px 0;
+}
+
+.court-card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.court-card-footer p {
+  margin: 0;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+/*--------------------------------------------RESERVATION--------------------------------------------*/
+
+.reservation-hours {
+  gap: 5px;
+}
+
+.reservation-item {
+  width: 100%;
+}
+
+.reservation-hour {
+  width: 100%;
+  height: 20px;
+}
+
+.court-hour {
+  width: 100%;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.not-reserved {
+  cursor: pointer;
+}
+
+.court-hour p {
+  margin: 0;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.court-hour .light {
+  color: var(--secondary-dark);
+}
+
+.reserve-btn button {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px 20px;
+}
+
+.reserve-active {
+  background-color: #0275d8 !important;
+}
+
+/*--------------------------------------------USERRESERVATION--------------------------------------------*/
+
+.user-reservation-content {
+  width: 90%;
+}
+
+.user-reservation-content .user-reservation-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary-dark);
+  margin: 10px 0;
+  padding: 10px;
+  border-bottom: 3px solid var(--primary-dark);
+}
+
+.user-reservations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.no-reservations {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-light);
+}
+
+.reservation-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.reservation-card {
+  min-width: 200px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.reservation-card:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+.reservation-court-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+.reservation-time {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+.reservation-day {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--secondary-light);
+  border-radius: 10px;
+}
+
+.reservation-day .time {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+/*--------------------------------------------ABOUT--------------------------------------------*/
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.about-footer img {
+  width: 40%;
+  height: auto;
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 80%;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.about-text h2 {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--primary-dark);
+  margin-top: 20px;
+}
+
+.about-text p {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.about-footer {
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 90%;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.about-footer h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: var(--primary-dark);
+}
+
+.about-footer p {
+  font-size: 16px;
+  color: var(--primary-dark);
+}
+
+.about-footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-footer li {
+  font-size: 16px;
+  color: var(--primary-dark);
+  margin: 5px 0;
+}
+
+.about-footer strong {
+  font-weight: bold;
+}
+
+/*--------------------------------------------RESPONSIVE--------------------------------------------*/
+
+@media screen and (max-width: 768px) {
+  .nav-content {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    margin: 10px 0 20px 0;
+  }
+
+  .nav-title {
+    margin-top: 10px;
+  }
+
+  .nav-title-text {
+    font-size: 20px;
+  }
+
+  .nav-btn a {
+    font-size: 16px;
+  }
+
+  .header-text {
+    font-size: 35px;
+  }
+
+  .pagenav-content {
+    flex-direction: column;
+  }
+
+  .pagenav-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .member-table {
+    width: 90%;
+  }
+
+  .court-table {
+    width: 100%;
+  }
+
+  .reservation-item {
+    width: 100%;
+  }
+
+  .reserve-btn button {
+    font-size: 16px;
+  }
+
+  .user-reservation-content {
+    width: 100%;
+  }
+
+  .user-reservation-content .user-reservation-title {
+    font-size: 24px;
+  }
+
+  .reservation-card-container {
+    justify-content: center;
+  }
+
+  .reservation-card {
+    min-width: 130px;
+  }
+
+  .reservation-day {
+    padding: 10px;
+    width: 90%;
+  }
+
+  .about-footer {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-footer img {
+    width: 80%;
+  }
+
+  .about-footer h1 {
+    font-size: 24px;
+  }
+
+  .about-footer p {
+    font-size: 14px;
+  }
+
+  .about-footer li {
+    font-size: 14px;
+  }
+}

@@ -6,6 +6,7 @@ namespace Backend.Common
     {
         public DateTime? Time { get; set; }
         public Guid? CourtId { get; set; }
+        public Guid? MemberId { get; set; }
         public bool IsActive { get; set; } = true;
     }
 }

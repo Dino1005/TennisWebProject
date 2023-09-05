@@ -57,7 +57,7 @@ namespace Backend.WebApi.Controllers
         {
             try
             {
-                Reservation reservationToCreate = new Reservation(Guid.NewGuid(), (DateTime)reservation.Time, (Guid)reservation.CourtId);
+                Reservation reservationToCreate = new Reservation(Guid.NewGuid(), (DateTime)reservation.Time, (Guid)reservation.CourtId, (Guid)reservation.MemberId);
                 int affectedRows = await reservationService.CreateAsync(reservationToCreate);
                 if (affectedRows > 0)
                 {
@@ -84,7 +84,8 @@ namespace Backend.WebApi.Controllers
 
                 DateTime time = reservation.Time ?? reservationById.Time;
                 Guid courtId = reservation.CourtId ?? reservationById.CourtId;
-                Reservation reservationToUpdate = new Reservation(id, time, courtId);
+                Guid memberId = reservation.MemberId ?? reservationById.MemberId;
+                Reservation reservationToUpdate = new Reservation(id, time, courtId, memberId);
 
                 int affectedRows = await reservationService.UpdateAsync(reservationById);
                 if (affectedRows > 0)

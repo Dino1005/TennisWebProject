@@ -68,7 +68,6 @@
   <ItemGroup>
     <Compile Include="ICourtService.cs" />
     <Compile Include="IMemberService.cs" />
-    <Compile Include="IReservationMemberService.cs" />
     <Compile Include="IReservationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -96,7 +96,6 @@
     <Compile Include="MemberRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryModule.cs" />
-    <Compile Include="ReservationMemberRepository.cs" />
     <Compile Include="ReservationRepository.cs" />
   </ItemGroup>
   <ItemGroup>

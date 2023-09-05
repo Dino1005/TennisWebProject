@@ -69,7 +69,6 @@
     <Compile Include="CourtService.cs" />
     <Compile Include="MemberService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReservationMemberService.cs" />
     <Compile Include="ReservationService.cs" />
     <Compile Include="ServiceModule.cs" />
   </ItemGroup>

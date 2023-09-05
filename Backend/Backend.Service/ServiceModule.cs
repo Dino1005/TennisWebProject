@@ -12,7 +12,6 @@ namespace Backend.Service
             builder.RegisterType<MemberService>().As<IMemberService>();
             builder.RegisterType<CourtService>().As<ICourtService>();
             builder.RegisterType<ReservationService>().As<IReservationService>();
-            builder.RegisterType<ReservationMemberService>().As<IReservationMemberService>();
         }
     }
 }

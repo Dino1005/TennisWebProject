@@ -7,6 +7,10 @@ using System.Net.Http;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
+using FirebaseAdmin;
+using FirebaseAdmin.Auth;
+using System.Collections.Generic;
+using Backend.WebApi.Services;
 
 namespace Backend.WebApi.Controllers
 {
@@ -16,7 +20,10 @@ namespace Backend.WebApi.Controllers
         public MemberController(IMemberService memberService)
         {
             this.memberService = memberService;
+
+            FirebaseApp firebaseApp = FirebaseInitializer.Initialize();
         }
+        
 
         [HttpGet]
         public async Task<HttpResponseMessage> GetAllAsync([FromUri] Sorting sorting, [FromUri] Paging paging, [FromUri] MemberFilter memberFilter)
@@ -56,11 +63,19 @@ namespace Backend.WebApi.Controllers
         {
             try
             {
+                string currentUserId = member.FirebaseUid;
+
                 Member memberToCreate = new Member(Guid.NewGuid(), member.FirstName, member.LastName, (DateTime)member.DoB);
                 int affectedRows = await memberService.CreateAsync(memberToCreate);
                 if (affectedRows > 0)
                 {
-                    return Request.CreateResponse(HttpStatusCode.OK, "Member added succesfully");
+                    var customClaims = new Dictionary<string, object>
+                    {
+                        { "memberId", memberToCreate.Id.ToString() }
+                    };
+
+                    await FirebaseAuth.DefaultInstance.SetCustomUserClaimsAsync(currentUserId, customClaims);
+                    return Request.CreateResponse(HttpStatusCode.OK, "Member created succesfully");
                 }
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Member was not added");
             }

@@ -19,7 +19,7 @@ namespace Backend.Repository
             var command = new NpgsqlCommand();
             command.Connection = connection;
 
-            StringBuilder query = new StringBuilder("SELECT *, COUNT(*) OVER() as TotalCount FROM \"Reservation\" INNER JOIN \"Court\" ON \"Reservation\".\"CourtId\" = \"Court\".\"Id\" WHERE \"Reservation\".\"IsActive\" = @IsActive");
+            StringBuilder query = new StringBuilder("SELECT *, COUNT(*) OVER() as TotalCount FROM \"Reservation\" INNER JOIN \"Court\" ON \"Reservation\".\"CourtId\" = \"Court\".\"Id\" INNER JOIN \"Member\" ON \"Reservation\".\"MemberId\" = \"Member\".\"Id\" WHERE \"Reservation\".\"IsActive\" = @IsActive ");
             command.Parameters.AddWithValue("@IsActive", reservationFilter.IsActive);
 
             if (reservationFilter.Time != null)
@@ -31,6 +31,11 @@ namespace Backend.Repository
             {
                 query.Append("AND \"CourtId\" = @CourtId ");
                 command.Parameters.AddWithValue("@CourtId", reservationFilter.CourtId);
+            }
+            if (reservationFilter.MemberId != null)
+            {
+                query.Append("AND \"MemberId\" = @MemberId ");
+                command.Parameters.AddWithValue("@MemberId", reservationFilter.MemberId);
             }
 
             string orderBy = sorting.OrderBy ?? "\"Reservation\".\"Id\"";
@@ -52,9 +57,16 @@ namespace Backend.Repository
                         (Guid)reader["Id"],
                         (DateTime)reader["Time"],
                         (Guid)reader["CourtId"],
+                        (Guid)reader["MemberId"],
                         new Court(
                             (Guid)reader["CourtId"],
                             (string)reader["Name"]
+                            ),
+                        new Member(
+                            (Guid)reader["MemberId"],
+                            (string)reader["FirstName"],
+                            (string)reader["LastName"],
+                            (DateTime)reader["DoB"]
                             )
                         );
                     reservations.Add(reservation);
@@ -67,7 +79,7 @@ namespace Backend.Repository
         public async Task<Reservation> GetByIdAsync(Guid id)
         {
             var connection = new NpgsqlConnection(connStr);
-            var command = new NpgsqlCommand("SELECT * FROM \"Reservation\" INNER JOIN \"Court\" ON \"Reservation\".\"CourtId\" = \"Court\".\"Id\" WHERE \"Reservation\".\"Id\"= @Id AND \"Reservation\".\"IsActive\" = TRUE", connection);
+            var command = new NpgsqlCommand("SELECT * FROM \"Reservation\" INNER JOIN \"Court\" ON \"Reservation\".\"CourtId\" = \"Court\".\"Id\" INNER JOIN \"Member\" ON \"Reservation\".\"MemberId\" = \"Member\".\"Id\" WHERE \"Reservation\".\"Id\"= @Id AND \"Reservation\".\"IsActive\" = TRUE", connection);
             command.Parameters.AddWithValue("@Id", id);
 
             using (connection)
@@ -81,9 +93,16 @@ namespace Backend.Repository
                         (Guid)reader["Id"],
                         (DateTime)reader["Time"],
                         (Guid)reader["CourtId"],
+                        (Guid)reader["MemberId"],
                         new Court(
                             (Guid)reader["CourtId"],
                             (string)reader["Name"]
+                            ),
+                        new Member(
+                            (Guid)reader["MemberId"],
+                            (string)reader["FirstName"],
+                            (string)reader["LastName"],
+                            (DateTime)reader["DoB"]
                             )
                         );
                     return reservation;
@@ -95,10 +114,11 @@ namespace Backend.Repository
         public async Task<int> CreateAsync(Reservation reservationToCreate)
         {
             var connection = new NpgsqlConnection(connStr);
-            var command = new NpgsqlCommand("INSERT INTO \"Reservation\" (\"Id\", \"Time\", \"CourtId\") VALUES (@Id, @Time, @CourtId)", connection);
+            var command = new NpgsqlCommand("INSERT INTO \"Reservation\" (\"Id\", \"Time\", \"CourtId\", \"MemberId\") VALUES (@Id, @Time, @CourtId, @MemberId)", connection);
             command.Parameters.AddWithValue("@Id", reservationToCreate.Id);
             command.Parameters.AddWithValue("@Time", reservationToCreate.Time);
             command.Parameters.AddWithValue("@CourtId", reservationToCreate.CourtId);
+            command.Parameters.AddWithValue("@MemberId", reservationToCreate.MemberId);
 
             using (connection)
             {
@@ -112,10 +132,11 @@ namespace Backend.Repository
         public async Task<int> UpdateAsync(Reservation reservationToUpdate)
         {
             var connection = new NpgsqlConnection(connStr);
-            var command = new NpgsqlCommand("UPDATE \"Reservation\" SET \"Time\" = @Time, \"CourtId\" = @CourtId WHERE \"Id\" = @Id", connection);
+            var command = new NpgsqlCommand("UPDATE \"Reservation\" SET \"Time\" = @Time, \"CourtId\" = @CourtId, \"MemberId\" = @MemberId  WHERE \"Id\" = @Id", connection);
             command.Parameters.AddWithValue("@Id", reservationToUpdate.Id);
             command.Parameters.AddWithValue("@Time", reservationToUpdate.Time);
             command.Parameters.AddWithValue("@CourtId", reservationToUpdate.CourtId);
+            command.Parameters.AddWithValue("@MemberId", reservationToUpdate.MemberId);
 
             using (connection)
             {

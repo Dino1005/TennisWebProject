@@ -11,21 +11,26 @@ namespace Backend.Model
         public Guid Id { get; set; }
         public DateTime Time { get; set; }
         public Guid CourtId { get; set; }
+        public Guid MemberId { get; set; }
         public Court Court { get; set; }
+        public Member Member { get; set; }
 
-        public Reservation(Guid id, DateTime time, Guid courtId)
+        public Reservation(Guid id, DateTime time, Guid courtId, Guid memberId)
         {
             Id = id;
             Time = time;
             CourtId = courtId;
+            MemberId = memberId;
         }
 
-        public Reservation(Guid id, DateTime time, Guid courtId, Court court)
+        public Reservation(Guid id, DateTime time, Guid courtId, Guid memberId, Court court, Member member)
         {
             Id = id;
             Time = time;
             CourtId = courtId;
+            MemberId = memberId;
             Court = court;
+            Member = member;
         }
     }
 }
